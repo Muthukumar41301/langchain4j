@@ -1,0 +1,38 @@
+
+spring:
+  application:
+    name: langchain4j
+
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 30
+      minimum-idle: 10
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      connection-timeout: 600000
+      pool-name: HikariCP
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        jdbc:
+          time_zone: Asia/Kolkata
+
+langchain4j:
+  google-ai-gemini:
+    chat-model:
+      api-key: ${GEMINI-API-KEY}
+      model-name: gemini-3.8-flash
+
+server:
+  port: 8085
